@@ -183,7 +183,6 @@ float calc_std_deviation
 //  Clears the contents of the histogram hist
 //---------------------------------------------------------------------
 
-
 void clear_histogram
 
 	( int*        hist )
@@ -198,7 +197,6 @@ void clear_histogram
 
 }
   
-
 //---------------------------------------------------------------------
 // Determines the position in the histogram of a value x.
 // The histogram has 12 intervals:
@@ -216,9 +214,77 @@ int get_hist_item
 	( float    x )
 
 {
-	if ( x > 9.99 ) return 11;
-
+	if ( x >=0 && x < 0.5 )
+	{
+	return 0;
 	return round(x);
+	}
+	
+	if ( x >= 0.5 && x < 1.5 )
+	{
+	return 1;
+	return round(x);
+	}
+	
+	if ( x >= 1.5 && x < 2.5 )
+	{
+	return 2;
+	return round(x);
+	}
+	
+	if ( x >= 2.5 && x < 3.5 )
+	{
+	return 3;
+	return round(x);
+	}
+
+	if ( x >= 3.5 && x < 4.5 )
+	{
+	return 4;
+	return round(x);
+	}
+	
+	if ( x >= 4.5 && x < 5.5 )
+	{
+	return 5;
+	return round(x);
+	}
+	
+	if ( x >= 5.5 && x < 6.5 )
+	{
+	return 6;
+	return round(x);
+	}
+	
+	if ( x >= 6.5 && x < 7.5 )
+	{
+	return 7;
+	return round(x);
+	}
+
+	if ( x >= 7.5 && x < 8.5 )
+	{
+	return 8;
+	return round(x);
+	}
+	
+	if ( x >= 8.5 && x < 9.5 )
+	{
+	return 9;
+	return round(x);
+	}
+	
+	if ( x >= 9.5 && x < 9.99 )
+	{
+	return 10;
+	return round(x);
+	}
+	
+	if ( x > 9.99 )
+	{
+	return 11;
+	return round(x);
+	}
 }
 
 
@@ -230,9 +296,35 @@ int get_hist_item
 void fill_histogram
 
 	( float*           grades ,
-	  int*             hist   )
+	  int*             hist   ,
+	  int			   count  )
 
 {
-	//To be completed by the student
+	int i;
+	int hist_position;
+
+for ( i = 0 ; i < count ; i++ )
+
+{
+	hist[get_hist_item(grades[i])] = hist[get_hist_item(grades[i])] +1;
 }
 
+for ( i = 0 ; i < HIST_ITEMS ; i++ )
+		{
+		printf("Hist is : %2.0i \n" , hist[i]);
+		}
+
+}
+//---------------------------------------------------------------------
+//  To be completed by the student
+//---------------------------------------------------------------------
+
+//0.0-0.5 : 12 #####
+//0.5-1.5 : 34 ###############
+//1.5-2.5 : 33 ###############
+//2.5-3.5 : 50 ##########################
+
+//where rst the interval range is printed, then a semi-colon, followed by the number of
+//items in the interval and a bar composed of pound keys to visualise the number of items
+//in the interval. Scale the length of this bar in such a way that the longest bar is 40
+//characters long.

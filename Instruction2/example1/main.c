@@ -35,7 +35,7 @@ int main( void )
 
 	clear_histogram( hist );
 
-	fill_histogram( grades , hist );
+	fill_histogram( grades , hist , count );
 
 	return 0;
 }
